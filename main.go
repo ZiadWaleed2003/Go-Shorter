@@ -9,14 +9,9 @@ import (
 
 func main(){
 
-
 	fmt.Println("hey shorty")
-
 	router := routes.NewRouter()
 
-	// router.HandleFunc("GET /", func (w http.ResponseWriter, r *http.Request) {
-	// 	w.Write([]byte("Welcome MF! \n"))
-	// })
 
 	server := http.Server{
 		Addr:   ":8080",
