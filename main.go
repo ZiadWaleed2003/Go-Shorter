@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 	"fmt"
-	"go-shorter/internal/routes"
+	"go-shorter/routes"
 )
 
 
