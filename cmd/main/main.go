@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 	"fmt"
+	"go-shorter/internal/routes"
 )
 
 
@@ -11,11 +12,11 @@ func main(){
 
 	fmt.Println("hey shorty")
 
-	router := http.NewServeMux()
+	router := routes.NewRouter()
 
-	router.HandleFunc("GET /", func (w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Welcome MF! \n"))
-	})
+	// router.HandleFunc("GET /", func (w http.ResponseWriter, r *http.Request) {
+	// 	w.Write([]byte("Welcome MF! \n"))
+	// })
 
 	server := http.Server{
 		Addr:   ":8080",
