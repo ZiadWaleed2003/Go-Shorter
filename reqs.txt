@@ -1,8 +1,0 @@
-I'm gonna define here what I will do :
-
-- to keep things simple I'm gonna store the URLs in in-memory map
-and expiry is after the program is quited 
-
-- gonna use base 62 to create short URLs 
-
-- built entirely with GO no Ai help just me and google and good old days!
