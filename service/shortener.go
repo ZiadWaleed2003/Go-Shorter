@@ -1,15 +1,22 @@
 package service
 
+import (
+	"net"
+)
 
+
+var encoded_urls map[string]string = make(map[string]string)
 
 func ShortenURL(url string) string {
 
-	//I'm going to shortnen the URL using the base 62 encoding
-	// and then store it in a map (let's keep like this for now)
-	// the flow is simple take the url  generate the new one with the encoder and then
-	// check the length of the current shortned URLs exist already pass it  to the encoder func
 
-	return ""
+	port := ":8080"
+	encoded_url := Encoder(len(encoded_urls))
+	shortened_url := "http://" + getLocalIP() + ":" + port + "/" + encoded_url
+	
+	encoded_urls[encoded_url] = url
+
+	return shortened_url
 }
 
 func Encoder(num int) string {
@@ -25,4 +32,31 @@ func Encoder(num int) string {
 	}
 
 	return encoded
+}
+
+func getLocalIP() string {
+    addrs, err := net.InterfaceAddrs()
+    if err != nil {
+        return "localhost"
+    }
+
+    for _, addr := range addrs {
+        var ip net.IP
+        switch v := addr.(type) {
+        case *net.IPNet:
+            ip = v.IP
+        case *net.IPAddr:
+            ip = v.IP
+        }
+        if ip == nil || ip.IsLoopback() {
+            continue
+        }
+        ip = ip.To4()
+        if ip == nil {
+            continue // not an ipv4 address
+        }
+ 
+        return ip.String()
+    }
+    return "localhost"
 }
